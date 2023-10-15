@@ -1,0 +1,57 @@
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+STATUS=0
+
+DESCRIBEFILES=$(git diff --staged -G"^\s*fdescribe\(" --name-only | wc -l)
+if [ $DESCRIBEFILES -gt 0 ]
+then
+  echo "You forgot to remove fdescribe from the following files:"
+  git diff --staged --name-only -G"^\s*fdescribe\("
+  echo ""
+  STATUS=1
+fi
+
+CONTEXTFILES=$(git diff --staged -G"^\s*fcontext\(" --name-only | wc -l)
+if [ $CONTEXTFILES -gt 0 ]
+then
+  echo "You forgot to remove fcontext from the following files:"
+	git diff --staged --name-only -G"^\s*fcontext\("
+  echo ""
+  STATUS=1
+fi
+
+ITFILES=$(git diff --staged -G"^\s*fit\(" --name-only | wc -l)
+if [ $ITFILES -gt 0 ]
+then
+  echo "You forgot to remove fit from the following files:"
+	git diff --staged --name-only -G"^\s*fit\("
+  echo ""
+  STATUS=1
+fi
+
+SPECIFYFILES=$(git diff --staged -G"^\s*fspecify\(" --name-only | wc -l)
+if [ $SPECIFYFILES -gt 0 ]
+then
+  echo "You forgot to remove fspecify from the following files:"
+  git diff --staged --name-only -G"^\s*fspecify\("
+  echo ""
+  STATUS=1
+fi
+
+EXAMPLEFILES=$(git diff --staged -G"^\s*fexample\(" --name-only | wc -l)
+if [ $EXAMPLEFILES -gt 0 ]
+then
+  echo "You forgot to remove fexample from the following files:"
+  git diff --staged --name-only -G"^\s*fexample\("
+  echo ""
+  STATUS=1
+fi
+
+exit $STATUS
