@@ -1,0 +1,7 @@
+{
+  "code": "Código",
+  "password": "Senha",
+  "login": "Login",
+  "code.required": "Código é obrigatório",
+  "password.required": "Senha é obrigatória"
+}

@@ -1,10 +1,22 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { AuthGuard } from './guards';
+
+const routes: Routes = [
+  {
+    path: '',
+    children: [],
+    canActivate: [() => inject(AuthGuard).canActivate()]
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./modules/login/login.component').then(component => component.LoginComponent)
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
