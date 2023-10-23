@@ -1,11 +1,18 @@
 {
   "root": true,
-  "ignorePatterns": ["src/stories/*", "src/assets/*"],
+  "ignorePatterns": [
+    "src/stories/*",
+    "src/assets/*"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "parserOptions": {
-        "project": ["tsconfig.json"],
+        "project": [
+          "tsconfig.json"
+        ],
         "createDefaultProgram": true
       },
       "extends": [
@@ -16,48 +23,76 @@
         "plugin:import/typescript"
       ],
       "rules": {
-        "@angular-eslint/component-selector": ["error", { "type": "element", "prefix": "app", "style": "kebab-case" }],
-        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "argsIgnorePattern": "^_"
+          }
+        ],
         "no-unused-vars": "off",
         "no-trailing-spaces": "error",
         "indent": "off",
         "linebreak-style": "off",
-        "eol-last": ["error", "always"],
-        "no-multiple-empty-lines": ["error", { "max": 1 }],
+        "eol-last": [
+          "error",
+          "always"
+        ],
+        "no-multiple-empty-lines": [
+          "error",
+          {
+            "max": 1
+          }
+        ],
         "import/no-unresolved": "off",
         "import/order": [
           "error",
           {
             "groups": [
-              // Built-in modules
-              ["builtin", "external"],
-
-              ["parent", "sibling", "index", "unknown"],
-
-              // Internal modules
-              ["internal"]
+              [
+                "builtin",
+                "external"
+              ],
+              [
+                "parent",
+                "sibling",
+                "index",
+                "unknown"
+              ],
+              [
+                "internal"
+              ]
             ],
             "pathGroups": [
-                {
-                  "pattern": "src/**",
-                  "group": "internal"
-                },
-                {
-                  "pattern": "@app/**",
-                  "group": "internal"
-                },
-                {
-                  "pattern": "rxjs**",
-                  "group": "external",
-                  "position": "after"
-                },
-                {
-                  "pattern": "rxjs/**",
-                  "group": "external",
-                  "position": "after"
-                }
+              {
+                "pattern": "src/**",
+                "group": "internal"
+              },
+              {
+                "pattern": "@app/**",
+                "group": "internal"
+              },
+              {
+                "pattern": "rxjs**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "rxjs/**",
+                "group": "external",
+                "position": "after"
+              }
             ],
-            "pathGroupsExcludedImportTypes": ["internal"],
+            "pathGroupsExcludedImportTypes": [
+              "internal"
+            ],
             "newlines-between": "always",
             "alphabetize": {
               "order": "asc",
@@ -65,22 +100,44 @@
             }
           }
         ]
-
       }
     },
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
       "rules": {},
       "overrides": [
         {
-          "files": ["*.html"],
-          "excludedFiles": ["*inline-template-*.component.html"],
-          "extends": ["plugin:prettier/recommended"],
+          "files": [
+            "*.html"
+          ],
+          "excludedFiles": [
+            "*inline-template-*.component.html"
+          ],
+          "extends": [
+            "plugin:prettier/recommended"
+          ],
           "rules": {
-            "prettier/prettier": ["error", { "parser": "angular" }]
+            "prettier/prettier": [
+              "error",
+              {
+                "parser": "angular"
+              }
+            ]
           }
         }
+      ]
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@ngrx/recommended"
       ]
     }
   ]
